@@ -2594,9 +2594,11 @@ dependencies = [
 name = "vault"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "iced",
  "kdbx-rs",
  "keepass",
+ "uuid",
 ]
 
 [[package]]
