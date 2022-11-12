@@ -11,9 +11,10 @@ use std::path::PathBuf;
 use uuid::Uuid;
 
 use std::fs::File;
+use std::io::prelude::*;
 
 fn main() {
-
+    new_db();
 }
 
 fn test1() -> Result<(), Error> {
@@ -45,10 +46,10 @@ fn new_db() {
     let mut kdbx = Kdbx::from_database(database);
     kdbx.set_key(CompositeKey::from_password("foo123"));
 
-    let mut file = File::create("/tmp/kdbx-rs-example.kdbx");
-    //kdbx.write(&mut file);
+    let mut file = File::create("kdbx-rs-example.kdbx");
+    let mut vecX: Vec<i32> = vec![];
+    let mut x = kdbx.write(file.unwrap());
 }
-
 
 fn set_sample_times(times: &mut Times) {
     times.last_access_time = NaiveDate::from_ymd_opt(2020, 5, 1).expect("REASON").and_hms(1, 2, 3);
@@ -60,7 +61,6 @@ fn set_sample_times(times: &mut Times) {
     times.usage_count = 1;
 }
 
-#[test]
 fn generate_xml() -> Result<(), kdbx_rs::Error> {
     let mut expected_path = PathBuf::new();
     expected_path.push(env!("CARGO_MANIFEST_DIR"));
