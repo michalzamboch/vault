@@ -1,3 +1,5 @@
+#[allow(dead_code)]
+
 use kdbx_rs::{self, CompositeKey, Error, Database};
 use kdbx_rs::Kdbx;
 
@@ -27,7 +29,7 @@ fn test1() -> Result<(), Error> {
         .unwrap()
         .password();
 
-        println!("{}", password.unwrap());
+    println!("{}", password.unwrap());
     Ok(())
 }
 
@@ -37,9 +39,11 @@ fn new_db() {
     database.set_description("Created with kdbx-rs");
 
     let mut entry = Entry::default();
+    entry.set_title("Moje heslo - name");
     entry.set_password("password1");
     entry.set_url("https://example.com");
     entry.set_username("User123");
+    entry.set_uuid(Uuid::from_u128(0x654320));
 
     database.add_entry(entry);
 
@@ -52,11 +56,11 @@ fn new_db() {
 }
 
 fn set_sample_times(times: &mut Times) {
-    times.last_access_time = NaiveDate::from_ymd_opt(2020, 5, 1).expect("REASON").and_hms(1, 2, 3);
-    times.last_modification_time = NaiveDate::from_ymd(2020, 4, 1).and_hms(1, 2, 3);
-    times.creation_time = NaiveDate::from_ymd(2020, 4, 1).and_hms(1, 1, 3);
-    times.location_changed = NaiveDate::from_ymd(2020, 4, 1).and_hms(1, 1, 3);
-    times.expiry_time = NaiveDate::from_ymd(2020, 4, 1).and_hms(1, 1, 3);
+    times.last_access_time = NaiveDate::from_ymd_opt(2020, 5, 1).expect("Date error.").and_hms_opt(1, 2, 3).expect("Wrong format.");
+    times.last_modification_time = NaiveDate::from_ymd_opt(2020, 4, 1).expect("Date error.").and_hms_opt(1, 2, 3).expect("Wrong format.");
+    times.creation_time = NaiveDate::from_ymd_opt(2020, 4, 1).expect("Date error.").and_hms_opt(1, 1, 3).expect("Wrong format.");
+    times.location_changed = NaiveDate::from_ymd_opt(2020, 4, 1).expect("Date error.").and_hms_opt(1, 1, 3).expect("Wrong format.");
+    times.expiry_time = NaiveDate::from_ymd_opt(2020, 4, 1).expect("Date error.").and_hms_opt(1, 1, 3).expect("Wrong format.");
     times.expires = false;
     times.usage_count = 1;
 }
@@ -77,6 +81,7 @@ fn generate_xml() -> Result<(), kdbx_rs::Error> {
     group.set_name("FooGroup");
     group.set_uuid(Uuid::from_u128(0x12345678));
     set_sample_times(group.times_mut());
+
     let mut entry = Entry::default();
     entry.set_title("Bar");
     entry.set_password("kdbxrs");
