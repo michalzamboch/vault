@@ -1,4 +1,3 @@
-#[allow(dead_code)]
 
 use kdbx_rs::{self, CompositeKey, Error, Database};
 use kdbx_rs::Kdbx;
@@ -20,6 +19,7 @@ fn main() {
     new_db();
 }
 
+#[allow(dead_code)]
 fn test1() -> Result<(), Error> {
     let file_path = "./res/test_input/kdbx4-argon2.kdbx";
     let kdbx = kdbx_rs::open(file_path)?;
@@ -52,7 +52,6 @@ fn new_db() {
     kdbx.set_key(CompositeKey::from_password("foo123"));
 
     let mut file = File::create("kdbx-rs-example.kdbx");
-    let mut vecX: Vec<i32> = vec![];
     let mut x = kdbx.write(file.unwrap());
 }
 
