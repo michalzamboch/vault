@@ -1,2 +1,5 @@
 /target
 *.kdbx
+/src/app_view/target
+/src/app_controller/target
+/src/app_model/target

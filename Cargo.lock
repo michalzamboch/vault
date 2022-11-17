@@ -74,6 +74,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "app_controller"
+version = "0.1.0"
+dependencies = [
+ "app_model",
+]
+
+[[package]]
+name = "app_model"
+version = "0.1.0"
+
+[[package]]
+name = "app_view"
+version = "0.1.0"
+dependencies = [
+ "app_controller",
+]
+
+[[package]]
 name = "approx"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2616,6 +2634,7 @@ dependencies = [
 name = "vault"
 version = "0.1.0"
 dependencies = [
+ "app_view",
  "chrono",
  "clipboard",
  "iced",

@@ -1,15 +1,9 @@
 [package]
-name = "vault"
+name = "app_view"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-keepass = "*"
-kdbx-rs = "*"
-iced = "*"
-chrono = "*"
-uuid = "*"
-clipboard = "*"
-app_view = { path = "./src/app_view" }
+app_controller = { path = "../app_controller" }

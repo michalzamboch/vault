@@ -15,7 +15,7 @@ use std::fs::File;
 use std::io::prelude::*;
 
 fn main() {
-    //back::Record::testR();
+    app_view::start();
     new_db();
 }
 
