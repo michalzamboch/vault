@@ -7,10 +7,8 @@ edition = "2021"
 
 [dependencies]
 
-# remote dependecies 
-keepass = "*"
+# remote dependecies
 kdbx-rs = "*"
-iced = "*"
 chrono = "*"
 uuid = "*"
 log = "*"
