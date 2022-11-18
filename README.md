@@ -6,11 +6,11 @@
 - iced: https://crates.io/crates/iced
 ## Getting Started
 To build this app on your own, enter into project root directory and run the following command.
-```shell
+```bash
 cargo build
 ```
 To run this app, simply run:
-```shell
+```bash
 cargo run
 ```
 ## Tips and Tricks
