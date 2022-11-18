@@ -1,5 +1,5 @@
 [package]
-name = "app_view"
+name = "app_tests"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,8 +8,9 @@ edition = "2021"
 [dependencies]
 
 # remote dependecies
-iced = "*"
 
 # local dependecies 
+app_view = { path = "../app_view" }
 app_controller = { path = "../app_controller" }
+app_model = { path = "../app_model" }
 app_common = { path = "../app_common" }

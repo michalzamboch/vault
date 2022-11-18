@@ -62,20 +62,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "app_common"
+version = "0.1.0"
+
+[[package]]
 name = "app_controller"
 version = "0.1.0"
 dependencies = [
+ "app_common",
  "app_model",
 ]
 
 [[package]]
 name = "app_model"
 version = "0.1.0"
+dependencies = [
+ "app_common",
+]
 
 [[package]]
 name = "app_view"
 version = "0.1.0"
 dependencies = [
+ "app_common",
  "app_controller",
  "iced",
 ]

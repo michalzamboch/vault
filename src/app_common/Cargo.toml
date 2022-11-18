@@ -1,13 +1,8 @@
 [package]
-name = "app_model"
+name = "app_common"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-
-# remote dependecies
-
-# local dependecies 
-app_common = { path = "../app_common" }
