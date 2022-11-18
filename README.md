@@ -10,6 +10,6 @@
 ## Tips and Tricks
 If you are not able to run powershell scripts on your machine.
 Run the following command, to enable powershell scripts.
-'''powershell
+```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-'''
+```
