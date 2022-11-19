@@ -1,3 +1,4 @@
+#![allow(dead_code, unused_variables, non_camel_case_types)]
 
 use kdbx_rs::{self, CompositeKey, Error, Database};
 use kdbx_rs::Kdbx;
@@ -12,14 +13,12 @@ use std::path::PathBuf;
 use uuid::Uuid;
 
 use std::fs::File;
-use std::io::prelude::*;
 
 fn main() {
     app_view::start();
     new_db();
 }
 
-#[allow(dead_code)]
 fn test1() -> Result<(), Error> {
     let file_path = "./res/test_input/kdbx4-argon2.kdbx";
     let kdbx = kdbx_rs::open(file_path)?;
@@ -49,10 +48,10 @@ fn new_db() {
     database.add_entry(entry);
 
     let mut kdbx = Kdbx::from_database(database);
-    kdbx.set_key(CompositeKey::from_password("foo123"));
+    let set_key_res = kdbx.set_key(CompositeKey::from_password("foo123"));
 
-    let mut file = File::create("kdbx-rs-example.kdbx");
-    let mut x = kdbx.write(file.unwrap());
+    let file = File::create("kdbx-rs-example.kdbx");
+    let set_key_write = kdbx.write(file.unwrap());
 }
 
 fn set_sample_times(times: &mut Times) {
@@ -65,6 +64,7 @@ fn set_sample_times(times: &mut Times) {
     times.usage_count = 1;
 }
 
+#[allow(dead_code)]
 fn generate_xml() -> Result<(), kdbx_rs::Error> {
     let mut expected_path = PathBuf::new();
     expected_path.push(env!("CARGO_MANIFEST_DIR"));
