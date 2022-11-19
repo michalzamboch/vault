@@ -5,3 +5,4 @@
 /src/app_model/target
 /src/app_common/target
 /src/app_tests/target
+*.lock
