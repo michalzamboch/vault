@@ -4,6 +4,7 @@
 ## Used Libraries
 - kdbx-rs: https://crates.io/crates/kdbx-rs
 - iced: https://crates.io/crates/iced
+- log: https://crates.io/crates/log
 ## Getting Started
 To build this app on your own, enter into project root directory and run the following command.
 ```bash

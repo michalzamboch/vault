@@ -34,4 +34,9 @@ impl Entry {
         self
     }
     
+    pub fn set_note(&mut self, note: String) -> &mut Self {
+        self.note = Some(note);
+        self
+    }
+    
 }
