@@ -9,15 +9,29 @@ pub struct Entry {
 }
 
 impl Entry {
-    pub fn new(title: String) -> Self {
+    pub fn new(title: String, password: String) -> Self {
         Self { 
             id: 0,
             title: title,
-            password: "********".to_string(),
+            password: password.to_owned(),
             url: None,
             note: None,
         }
     }
+  
+}
+
+// ENTRY BUILDER ----------------------------------------------------------------
+
+pub struct EntryBuilder {
+    id: u32,
+    title: String,
+    password: String,
+    url: Option<String>,
+    note: Option<String>,
+}
+
+impl EntryBuilder {
 
     pub fn set_title(&mut self, title: String) -> &mut Self {
         self.title = title;
@@ -38,5 +52,5 @@ impl Entry {
         self.note = Some(note);
         self
     }
-    
+  
 }

@@ -81,6 +81,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "app_tests"
+version = "0.1.0"
+dependencies = [
+ "app_common",
+ "app_controller",
+ "app_model",
+ "app_view",
+ "chrono",
+ "kdbx-rs",
+ "log",
+ "uuid",
+]
+
+[[package]]
 name = "app_view"
 version = "0.1.0"
 dependencies = [
@@ -2435,6 +2449,7 @@ dependencies = [
 name = "vault"
 version = "0.1.0"
 dependencies = [
+ "app_tests",
  "app_view",
  "chrono",
  "kdbx-rs",

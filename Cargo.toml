@@ -15,3 +15,4 @@ log = "*"
 
 # local dependecies 
 app_view = { path = "./src/app_view" }
+app_tests = { path = "./src/app_tests" }
