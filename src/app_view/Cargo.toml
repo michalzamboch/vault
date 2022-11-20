@@ -9,6 +9,7 @@ edition = "2021"
 
 # remote dependecies
 iced = "*"
+egui = "*"
 
 # local dependecies 
 app_controller = { path = "../app_controller" }

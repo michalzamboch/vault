@@ -8,6 +8,10 @@ edition = "2021"
 [dependencies]
 
 # remote dependecies
+kdbx-rs = "*"
+chrono = "*"
+uuid = "*"
+log = "*"
 
 # local dependecies 
 app_common = { path = "../app_common" }
