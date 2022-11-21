@@ -14,10 +14,6 @@ pub struct EntryWrapper {
     id: i32,
     entry: Entry,
     time: Times,
-    title: String,
-    password: String,
-    url: Option<String>,
-    note: Option<String>,
 }
 
 impl EntryWrapper {
@@ -26,10 +22,6 @@ impl EntryWrapper {
             id: -1,
             entry: Entry::default(),
             time: Times::default(),
-            title: title.to_owned(),
-            password: password.to_owned(),
-            url: None,
-            note: None,
         }
     }
 
@@ -37,30 +29,30 @@ impl EntryWrapper {
         self.id
     }
 
-    pub fn set_title(&mut self, title: String) {
-        self.title = title;
+    pub fn set_title(&mut self, title: &str) {
+        self.entry.set_title(title);
     }
 
     pub fn get_title(self) -> String {
-        self.title
+        self.entry.title().unwrap_or("").to_string()
     }
 
-    pub fn set_password(&mut self, password: String) {
-        self.password = password;
+    pub fn set_password(&mut self, password: &str) {
+        self.entry.set_password(password);
     }
     
     pub fn get_password(self) -> String {
-        self.title
+        self.entry.password().unwrap_or("").to_string()
     }
 
-    pub fn set_url(&mut self, url: String) {
-        self.url = Some(url);
+    pub fn set_url(&mut self, url: &str) {
+        self.entry.set_url(url);
     }
-    
-    pub fn set_note(&mut self, note: String) {
-        self.note = Some(note);
+
+    pub fn get_url(self) -> String {
+        self.entry.url().unwrap_or("").to_string()
     }
-  
+
 }
 
 // ENTRY BUILDER ----------------------------------------------------------------
@@ -70,13 +62,12 @@ pub struct EntryBuilder {
     title: String,
     password: String,
     url: Option<String>,
-    note: Option<String>,
 }
 
 impl EntryBuilder {
 
-    pub fn set_title(&mut self, title: String) -> &mut Self {
-        self.title = title;
+    pub fn set_title(&mut self, title: &str) -> &mut Self {
+        self.title = title.to_owned();
         self
     }
 
@@ -89,10 +80,5 @@ impl EntryBuilder {
         self.url = Some(url);
         self
     }
-    
-    pub fn set_note(&mut self, note: String) -> &mut Self {
-        self.note = Some(note);
-        self
-    }
-  
+
 }
