@@ -52,10 +52,14 @@ impl EntryWrapper {
     pub fn get_url(self) -> String {
         self.entry.url().unwrap_or("").to_string()
     }
-
+    
+    pub fn get_entry(self) -> Entry {
+        self.entry
+    } 
 }
 
 // ENTRY BUILDER ----------------------------------------------------------------
+// *** DEPRICATED ***
 
 pub struct EntryBuilder {
     id: u32,
