@@ -14,6 +14,7 @@ use uuid::Uuid;
 
 use std::fs::File;
 
+// ---------------------------------------------------------------------------------------------------
 
 fn test1() -> Result<(), Error> {
     let file_path = "./res/test_input/kdbx4-argon2.kdbx";
@@ -40,6 +41,8 @@ fn new_db() {
     entry.set_url("https://example.com");
     entry.set_username("User123");
     entry.set_uuid(Uuid::from_u128(0x654320));
+
+    let group = database.root_mut();
 
     database.add_entry(entry);
 
