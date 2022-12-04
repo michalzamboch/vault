@@ -63,7 +63,6 @@ fn set_sample_times(times: &mut Times) {
     times.usage_count = 1;
 }
 
-#[allow(dead_code)]
 fn generate_xml() -> Result<(), kdbx_rs::Error> {
     let mut expected_path = PathBuf::new();
     expected_path.push(env!("CARGO_MANIFEST_DIR"));

@@ -3,7 +3,7 @@
 - Rust based GUI app for saving passwords.
 ## Used Libraries
 - kdbx-rs: https://crates.io/crates/kdbx-rs
-- egui: https://crates.io/crates/egui
+- iced: https://crates.io/crates/iced
 - log: https://crates.io/crates/log
 ## Getting Started
 To build this app on your own, enter into project root directory and run the following command.
