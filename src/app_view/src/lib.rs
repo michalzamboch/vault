@@ -16,6 +16,9 @@ use iced::{Alignment, Element, Sandbox, Settings};
 use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
 
+
+use eframe::egui::{*};
+
 // -----------------------------------------------------------------------
 
 fn run_view() -> iced::Result {
@@ -33,19 +36,24 @@ pub fn start() {
 
 struct Counter {
     value: i32,
+    searchedString: String,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 enum Message {
     IncrementPressed,
     DecrementPressed,
+    Search(String)
 }
 
 impl Sandbox for Counter {
     type Message = Message;
 
     fn new() -> Self {
-        Self { value: 0 }
+        Self {
+            value: 0,
+            searchedString: String::new(),
+        }
     }
 
     fn title(&self) -> String {
@@ -59,6 +67,11 @@ impl Sandbox for Counter {
             }
             Message::DecrementPressed => {
                 self.value -= 10;
+            }
+            Message::Search(value) => {
+                self.searchedString.clear();
+                self.searchedString = value;
+                println!("{}", self.searchedString)
             }
         }
     }
@@ -78,9 +91,17 @@ impl Sandbox for Counter {
 
 
 fn search_bar() -> Element<'static, Message> {
+    
+    let mut value: String = String::new();
     row![
         text("Text").size(50),
-        button("Search").on_press(Message::DecrementPressed)
+        button("Search").on_press(Message::DecrementPressed),
+        text_input(
+            "Type something to continue...",
+            &value,
+            Message::Search)
+        .padding(10)
+        .size(10)
     ]
     .padding(20)
     .align_items(Alignment::Center)
