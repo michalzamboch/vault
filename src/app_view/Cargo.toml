@@ -8,7 +8,6 @@ edition = "2021"
 [dependencies]
 
 # remote dependecies
-iced = "*"
 
 eframe = {version = "0.19", features = ["persistence"]}
 serde = { version = "1.0.136", features = ["derive"] }
