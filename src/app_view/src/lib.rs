@@ -17,18 +17,18 @@ pub fn start() {
         initial_window_size: Some(egui::vec2(800.0, 600.0)),
         ..Default::default()
     };
-    eframe::run_native("Vault", options, Box::new(|_cc| Box::new(MyApp::default())));
+    eframe::run_native("Vault", options, Box::new(|_cc| Box::new(VaultViewStruct::default())));
 }
 
 #[derive(Default)]
-struct MyApp {
+struct VaultViewStruct {
     allowed_to_close: bool,
     show_confirmation_dialog: bool,
     search_string: String,
     table_id: String,
 }
 
-impl eframe::App for MyApp {
+impl eframe::App for VaultViewStruct {
     fn on_close_event(&mut self) -> bool {
         self.show_confirmation_dialog = true;
         self.allowed_to_close
@@ -56,22 +56,22 @@ impl eframe::App for MyApp {
 
             let main_grid = egui::Grid::new("some_unique_id");
 
-            main_grid.show(ui, |ui| {
-                ui.label("Seznam.cz");
-                ui.label("john.doe@seznam.cz");
-                ui.label("heslo");
-                ui.end_row();
+            let text_style = egui::TextStyle::Body;
+            let row_height = ui.text_style_height(&text_style);
+            let total_rows = 100;
+            let my_scroll_area = egui::ScrollArea::vertical().max_height(f32::INFINITY).max_width(f32::INFINITY);
+            my_scroll_area.show_rows(ui, row_height, total_rows, |ui, row_range| {
+                for row in row_range {
+                    ui.horizontal(|ui| {
+                        ui.label("Seznam.cz");
+                        ui.label("john.doe@seznam.cz");
+                        ui.label("heslo");
+                        ui.end_row();
+                    });
+                }
             });
 
-            /*let text_style = egui::TextStyle::Body;
-            let row_height = ui.text_style_height(&text_style);
-            let total_rows = 1000;
-            egui::ScrollArea::vertical().show_rows(ui, row_height, total_rows, |ui, row_range| {
-                for row in row_range {
-                    let text = format!("Row {}/{}", row + 1, total_rows);
-                    ui.label(text);
-                }
-            });*/
+
         });
 
         if self.show_confirmation_dialog {
