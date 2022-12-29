@@ -1,5 +1,5 @@
 # Vault
-## ------------------- WORK SUSPENDED -------------------
+## ---------------------- WORK SUSPENDED ----------------------
 
 ## What is Vault?
 - Rust based GUI app for saving passwords.
