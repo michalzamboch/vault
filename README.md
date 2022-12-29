@@ -1,4 +1,6 @@
 # Vault
+## ------------------- WORK SUSPENDED -------------------
+
 ## What is Vault?
 - Rust based GUI app for saving passwords.
 ## Used Libraries

@@ -1,5 +1,7 @@
 #![allow(dead_code, unused_variables, non_camel_case_types, unused_imports)]
 
+mod vault;
+
 use app_controller::*;
 
 use once_cell::sync::Lazy;
